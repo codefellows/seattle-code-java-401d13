@@ -1,6 +1,7 @@
 package zorkSalon.reptile;
 
 import zorkSalon.Animal;
+import zorkSalon.Lifestyle;
 
 public class Chamaleon extends Reptile {
 
@@ -8,20 +9,22 @@ public class Chamaleon extends Reptile {
   private boolean isPet;
   final String store = "Zorks Salon";
 
-  public Chamaleon(boolean coldBlooded, Float currentColor, boolean hasTail, int legs, boolean isPet) {
-    super(coldBlooded, hasTail);
+  public Chamaleon(Integer legs, boolean isColdBlooded, boolean hasTail, Float currentColor, boolean isPet) {
+    super(legs, isColdBlooded, hasTail);
     this.currentColor = currentColor;
     this.isPet = isPet;
-//    Animal.incrementAnimals();
   }
-
-  
 
 
   public static void changeColor(Integer newColor){
     // change current color
   }
 
+  @Override
+  public void reproduce(int days) {
+    super.reproduce(days);
+    System.out.println("Born from an egg");
+  }
 
   public Float getCurrentColor() {
 

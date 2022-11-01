@@ -1,6 +1,6 @@
 package zorkSalon;
 
-abstract public class Animal {
+abstract public class Animal implements Lifestyle{
   private Integer legs;
   static Integer Animals = 0;
   final static String store = "Zorks Salon";
@@ -24,6 +24,7 @@ abstract public class Animal {
     incrementAnimals();
   }
 
+  public void reproduce(){}
 
   static void makeNoise(){
     System.out.println("LOUD NOISES");
