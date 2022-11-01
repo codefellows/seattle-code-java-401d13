@@ -6,11 +6,13 @@ public class Reptile extends Animal {
   private boolean isColdBlooded;
   private boolean hasTail;
 
-  public Reptile(boolean isColdBlooded, boolean hasTail) {
+  public Reptile(Integer legs, boolean isColdBlooded, boolean hasTail) {
     super(legs);
     this.isColdBlooded = isColdBlooded;
     this.hasTail = hasTail;
   }
+
+
 
   public boolean isColdBlooded() {
     return isColdBlooded;

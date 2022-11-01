@@ -17,7 +17,7 @@ class LibraryTest {
     @Test void canCreateAChamaleon(){
       //Arrange
       Chamaleon.changeColor(9);
-      Chamaleon sut = new Chamaleon(true, (float)0x83E421, true, 4, true);
+      Chamaleon sut = new Chamaleon(4, true, true, (float)0x83E421, true);
       sut.changeColor(7);
       Integer legs = sut.getLegs();
       // Act
@@ -33,5 +33,10 @@ class LibraryTest {
       Animal.incrementAnimals();
     }
 
-
+  @Test
+  void testLifestyleMethodsOnChamaleon() {
+      // Arrange
+    Chamaleon sut = new Chamaleon(4, true, true, (float)0x83E421, true);
+    sut.reproduce(5);
+    }
 }
