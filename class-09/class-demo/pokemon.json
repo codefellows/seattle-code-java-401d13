@@ -1,0 +1,29 @@
+{
+  "name": "ditto",
+  "height": 3,
+  "types": [
+    {
+      "type": {
+        "name": "normal"
+      }
+    }
+  ],
+  "abilities": [
+    {
+      "ability": {
+        "name": "limber",
+        "url": "https://pokeapi.co/api/v2/ability/7/"
+      },
+      "isHidden": false,
+      "slot": 1
+    },
+    {
+      "ability": {
+        "name": "imposter",
+        "url": "https://pokeapi.co/api/v2/ability/150/"
+      },
+      "isHidden": false,
+      "slot": 3
+    }
+  ]
+}
