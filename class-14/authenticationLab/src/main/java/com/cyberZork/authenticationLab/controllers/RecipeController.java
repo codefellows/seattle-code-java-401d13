@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class RecipeController {
 
+  //wires up the application to the database on pgadmin
   @Autowired
   SiteUserRepository siteUserRepository;
 
+  //when the user navigates to the recipe page, the page authorizes the user to ensure that they still have appropriate access. Recipes are currently not loaded to this page.
   @GetMapping("/recipe")
   public String getRecipe(HttpServletRequest request, Model m){
 
