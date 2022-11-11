@@ -19,11 +19,13 @@ public class AuthenticationController {
   @Autowired
   SiteUserRepository siteUserRepository;
 
+  //Sets a home rout that will return the login html page
   @GetMapping("/")
   public String getHome(){
     return "login.html";
   }
 
+  //Sets a rout for signup
   @PostMapping("/signup")
   public RedirectView signUp(String userName, String password){
     // hash pw
@@ -36,6 +38,8 @@ public class AuthenticationController {
     return new RedirectView("/");
   }
 
+  // sets a login rout which will ask the user to be logged in. then will either redirect them to the recipie rout when
+  //a proper usrensme and hash passwird is entered or redirect them with a message prompting them to try again
   @PostMapping("/login")
   public RedirectView login(HttpServletRequest request, String userName, String password){
     // Find user by username

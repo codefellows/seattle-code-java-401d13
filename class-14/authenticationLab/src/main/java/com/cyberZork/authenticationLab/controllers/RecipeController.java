@@ -16,10 +16,12 @@ public class RecipeController {
   @Autowired
   SiteUserRepository siteUserRepository;
 
+  //Set a rout of recipe that will render the recipies to the user specifically logged in.
   @GetMapping("/recipe")
   public String getRecipe(HttpServletRequest request, Model m){
 
     HttpSession session = request.getSession();
+    //get the username of the logged-in user
     String userName = session.getAttribute("userName").toString();
     // authenticate the user
     if(userName != null){

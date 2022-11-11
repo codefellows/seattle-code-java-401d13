@@ -3,13 +3,16 @@ package com.cyberZork.authenticationLab.models;
 import javax.persistence.*;
 import java.util.List;
 
+// sets the class as an instance of a data table entity
 @Entity
 public class SiteUser {
 
+//  Creates a unique id for each item
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  // establishes one SiteUser to be connected to many recipes
   @OneToMany(mappedBy = "siteUser")
   List<Recipe> recipes;
 

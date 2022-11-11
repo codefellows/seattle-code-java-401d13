@@ -2,9 +2,12 @@ package com.cyberZork.authenticationLab.models;
 
 import javax.persistence.*;
 
+// makes this class a data table entitt
 @Entity
 public class Recipe {
+  //creates an id for each entry
   @Id
+  // auto generates the id value for the data table
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
@@ -12,6 +15,7 @@ public class Recipe {
   private String description;
 //  private String[] steps;
 
+  //sets multiple recepies to be connected to one user
   @ManyToOne
   SiteUser siteUser;
 
