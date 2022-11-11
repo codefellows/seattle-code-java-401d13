@@ -12,7 +12,7 @@ public class Recipe {
   private String description;
 //  private String[] steps;
 
-  @ManyToOne
+  @ManyToOne // many recipes mapped by a single "siteUser" -AA
   SiteUser siteUser;
 
   protected Recipe() {
