@@ -16,6 +16,8 @@ public class RecipeController {
   @Autowired
   SiteUserRepository siteUserRepository;
 
+
+  // route to authenticate user for access to recipes page
   @GetMapping("/recipe")
   public String getRecipe(HttpServletRequest request, Model m){
 

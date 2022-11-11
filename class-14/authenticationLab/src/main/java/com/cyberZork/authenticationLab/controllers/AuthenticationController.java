@@ -13,17 +13,21 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+// controller for authentication directory.
 @Controller
 public class AuthenticationController {
 
   @Autowired
   SiteUserRepository siteUserRepository;
 
+  // This is the map to get Home route
   @GetMapping("/")
   public String getHome(){
     return "login.html";
   }
 
+
+// route to had sign up page.
   @PostMapping("/signup")
   public RedirectView signUp(String userName, String password){
     // hash pw
@@ -36,6 +40,8 @@ public class AuthenticationController {
     return new RedirectView("/");
   }
 
+
+  // route to login page
   @PostMapping("/login")
   public RedirectView login(HttpServletRequest request, String userName, String password){
     // Find user by username
