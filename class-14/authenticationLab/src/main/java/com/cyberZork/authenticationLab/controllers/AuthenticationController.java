@@ -23,13 +23,15 @@ public class AuthenticationController {
   public String getHome(){
     return "login.html";
   }
+  // display login page -AA
 
   @PostMapping("/signup")
+  //Sign up and store hashed and salted password for a new user, redirect - why? Login again? -AA
   public RedirectView signUp(String userName, String password){
     // hash pw
-    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));//Bcrypt did not like "2" or over 30.-AA
     // new User instance with hashedPW
-    SiteUser newUser = new SiteUser(userName, hashedPassword);
+    SiteUser newUser = new SiteUser(userName, hashedPassword);//da hash is in!
     //save to DB
     siteUserRepository.save(newUser);
     // Redirect?
@@ -37,12 +39,14 @@ public class AuthenticationController {
   }
 
   @PostMapping("/login")
+  //Finding a user attempting to login and comapre the hashes (attempted password and what is in db)-AA
+  // Creating session for further access, based on confirmed "in-session" status to "protected" pages -AA
   public RedirectView login(HttpServletRequest request, String userName, String password){
     // Find user by username
-    SiteUser siteUser = siteUserRepository.getSiteUserByUserName(userName);
+    SiteUser siteUser = siteUserRepository.getSiteUserByUserName(userName);//using that custom repo name -AA
     // conditional
       // 1. Is user null? -> login.html
-    if (siteUser != null) {
+    if (siteUser != null ) {
       // 2. compare DB password to given password
       if(BCrypt.checkpw(password, siteUser.getPassword())) {
         // generate a secured session
@@ -56,3 +60,6 @@ public class AuthenticationController {
   }
 
 }
+
+//where we _initially_ "writing" the session -AA
+

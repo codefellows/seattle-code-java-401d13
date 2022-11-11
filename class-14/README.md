@@ -1,4 +1,5 @@
 # Class 14: Authentication With Bcrypt And Sessions
+#### Mob programming in class on 11.10.2022!
 
 Today's focus will be implementing low-level authentication via the bcrypt library and server sessions.
 
