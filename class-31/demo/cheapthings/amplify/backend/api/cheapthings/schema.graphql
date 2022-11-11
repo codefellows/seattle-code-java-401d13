@@ -1,6 +1,0 @@
-type CheapItem @model {
-  id: ID!
-  thingName: String
-  quantity: Int
-  price: Float
-}
