@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h3 th:if="${username}" th:text="${'Current User: ' + username + ' with first name: ' + fName}"></h3>
+<h1>Welcome to the best application in all the land</h1>
+
+<a th:if="!${username}" href="/login">Log In</a>
+<br>
+<a th:if="!${username}">Sign Up</a>
+</body>
+</html>
