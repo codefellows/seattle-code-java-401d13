@@ -8,6 +8,8 @@
 <!--Fragement header!!-->
 <div th:replace="/fragments/nav-header :: site-user"></div>
 <div th:replace="/fragments/nav-header :: h3"></div>
+<div th:replace="/fragments/nav-header :: list-frag"></div>
+<div th:replace="/fragments/nav-header :: div"></div>
 
 <!--error fragment0-->
 <div th:replace="/fragments/error-fragment :: user-error"></div>
@@ -19,28 +21,5 @@
   <input th:if="${authenticatedUsername.equals(viewUsername)}" type="submit" value="Edit User Info">
 </form>
 
-<!--
-  Form to follow users
-
-  List users that I follow
-
-  List users that follow me
--->
-
-<form th:action="${'/follow-user/' + viewUserID}" th:method="PUT">
-  <input type="hidden" th:value="${viewUserID}">
-  <input type="submit" value="Follow User" th:disabled="${authenticatedUsername.equals(viewUsername)}">
-<!--  submit input that is disabled if you try to follow yourself-->
-</form>
-
-<h2>Users followed</h2>
-<ul th:each="followedUser : ${usersIFollow}">
-  <li th:text="${followedUser.username}"></li>
-</ul>
-<div th:utext=<script>alert('Hi!')</script>></div>
-<h2>Users that follow this user</h2>
-<ul th:each="userThatFollows : ${usersWhoFollowMe}">
-  <li th:text="${userThatFollows.username}"></li>
-</ul>
 </body>
 </html>
