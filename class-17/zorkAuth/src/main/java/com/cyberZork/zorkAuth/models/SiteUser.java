@@ -4,11 +4,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 //TODO: Step1A: Make user model (NOT called "User"!)
 @Entity
@@ -38,27 +39,6 @@ public class SiteUser implements UserDetails {
     this.username = username;
     this.password = password;
     this.firstName = firstName;
-  }
-
-  // implemetn many to many!
-
-  @ManyToMany
-  @JoinTable(
-    name = "followers_to_followees",
-    joinColumns = {@JoinColumn(name = "userWhoIsFollowing")},
-    inverseJoinColumns = {@JoinColumn(name = "FollowedUser")}
-  )
-  Set<SiteUser> usersIFollow = new HashSet<>();
-
-  @ManyToMany(mappedBy = "usersIFollow")
-  Set<SiteUser> usersWhoFollowMe = new HashSet<>();
-
-  public Set<SiteUser> getUsersIFollow() {
-    return usersIFollow;
-  }
-
-  public Set<SiteUser> getUsersWhoFollowMe() {
-    return usersWhoFollowMe;
   }
 
   public Long getId() {
