@@ -41,8 +41,8 @@ public class SiteUserController {
       m.addAttribute("fName", foundUser.getFirstName());
     }
 
-//    throw new RuntimeException("It's a 404");
-    return "index";
+    throw new RuntimeException("It's a 404");
+//    return "index";
   }
 
   @GetMapping("login")
@@ -95,9 +95,8 @@ public class SiteUserController {
   public String getUserInfo(Model m, Principal p, @PathVariable Long id){
     SiteUser authenticatedUser = siteUserRepo.findByUsername(p.getName());
     m.addAttribute("authenticatedUsername", authenticatedUser.getUsername());
+
     SiteUser viewUser = siteUserRepo.findById(id).orElseThrow();
-    m.addAttribute("usersIFollow", viewUser.getUsersIFollow());
-    m.addAttribute("usersWhoFollowMe", viewUser.getUsersWhoFollowMe());
     m.addAttribute("viewUsername", viewUser.getUsername());
     m.addAttribute("viewUserID", viewUser.getId());
 
@@ -114,23 +113,6 @@ public class SiteUserController {
     } else {
       redir.addFlashAttribute("errorMessage", "Cannot edit another user's info");
     }
-    return new RedirectView("/users/" + id);
-  }
-
-  // Implement following other users
-  @PutMapping("/follow-user/{id}")
-  public RedirectView followUser(Principal p, @PathVariable Long id){
-    SiteUser userToFollow = siteUserRepo.findById(id).orElseThrow(() -> new RuntimeException("Error retrieving user from the database with an ID of: " + id));
-    SiteUser browsingUser = siteUserRepo.findByUsername(p.getName());
-
-    // check that the user isn;t trying to follow themselves
-    if(browsingUser.getUsername().equals(userToFollow.getUsername())){
-      throw new IllegalArgumentException("Following yourself is a bad idea!");
-    }
-    // access followers from browsingUser and update with new userToFollow
-    browsingUser.getUsersIFollow().add(userToFollow);
-    siteUserRepo.save(browsingUser);
-    // save to db
     return new RedirectView("/users/" + id);
   }
 }
