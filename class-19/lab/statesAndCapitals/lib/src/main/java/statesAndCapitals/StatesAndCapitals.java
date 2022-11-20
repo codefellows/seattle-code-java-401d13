@@ -158,7 +158,7 @@ public class StatesAndCapitals
         // A13. Submit how many states are in each time zone (or group of time zones)
         // Use collect(groupingBy()) and counting()
 
-        Map<String, Long> numberOfStatesByTimeZone = states.stream().collect(Collectors.groupingBy(s->s.getTimeZones().toString(), Collectors.counting()));
+        Map<String, Long> numberOfStatesByTimeZone = states.stream().collect(groupingBy(s->s.getTimeZones().toString(), counting()));
 
         testResults.put("A13", StatesAndCapitalsCheck.adv13(numberOfStatesByTimeZone));
 
