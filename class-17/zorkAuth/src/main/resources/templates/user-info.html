@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--Fragement header!!-->
+<div th:replace="/fragments/nav-header :: site-user"></div>
+<div th:replace="/fragments/nav-header :: h3"></div>
+<div th:replace="/fragments/nav-header :: list-frag"></div>
+<div th:replace="/fragments/nav-header :: div"></div>
+
+<!--error fragment0-->
+<div th:replace="/fragments/error-fragment :: user-error"></div>
+<h3 th:if="${username}" th:text="${'Current user: ' + username}"></h3>
+
+<form th:action="${'/users/' + viewUserID}" th:method="PUT">
+  <label>Username</label>
+  <input th:value="${viewUsername}" type="text" name="username" th:disabled="${!authenticatedUsername.equals(viewUsername)}">
+  <input th:if="${authenticatedUsername.equals(viewUsername)}" type="submit" value="Edit User Info">
+</form>
+
+</body>
+</html>

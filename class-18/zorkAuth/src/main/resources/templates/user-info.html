@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--Fragement header!!-->
+<div th:replace="/fragments/nav-header :: site-user"></div>
+<div th:replace="/fragments/nav-header :: h3"></div>
+
+<!--error fragment0-->
+<div th:replace="/fragments/error-fragment :: user-error"></div>
+<h3 th:if="${username}" th:text="${'Current user: ' + username}"></h3>
+
+<form th:action="${'/users/' + viewUserID}" th:method="PUT">
+  <label>Username</label>
+  <input th:value="${viewUsername}" type="text" name="username" th:disabled="${!authenticatedUsername.equals(viewUsername)}">
+  <input th:if="${authenticatedUsername.equals(viewUsername)}" type="submit" value="Edit User Info">
+</form>
+
+<!--
+  Form to follow users
+
+  List users that I follow
+
+  List users that follow me
+-->
+
+<form th:action="${'/follow-user/' + viewUserID}" th:method="PUT">
+  <input type="hidden" th:value="${viewUserID}">
+  <input type="submit" value="Follow User" th:disabled="${authenticatedUsername.equals(viewUsername)}">
+<!--  submit input that is disabled if you try to follow yourself-->
+</form>
+
+<h2>Users followed</h2>
+<ul th:each="followedUser : ${usersIFollow}">
+  <li th:text="${followedUser.username}"></li>
+</ul>
+<div th:utext=<script>alert('Hi!')</script>></div>
+<h2>Users that follow this user</h2>
+<ul th:each="userThatFollows : ${usersWhoFollowMe}">
+  <li th:text="${userThatFollows.username}"></li>
+</ul>
+</body>
+</html>
