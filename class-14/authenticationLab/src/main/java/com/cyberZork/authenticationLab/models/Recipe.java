@@ -2,8 +2,11 @@ package com.cyberZork.authenticationLab.models;
 
 import javax.persistence.*;
 
+//entity makes allows for a singleton to be created and generates a location on in the db
 @Entity
 public class Recipe {
+
+  // creates an id that is unique to a new addition to the table
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -12,9 +15,11 @@ public class Recipe {
   private String description;
 //  private String[] steps;
 
+  // connects the many recipes to one user. The common variable name of siteUser is used
   @ManyToOne
   SiteUser siteUser;
 
+  //empty constructor for the singleton creation
   protected Recipe() {
   }
 

@@ -3,13 +3,16 @@ package com.cyberZork.authenticationLab.models;
 import javax.persistence.*;
 import java.util.List;
 
+//creating the ability for a singleton to be initialized and used in db
 @Entity
 public class SiteUser {
 
+  //allows for the generation of a unique id for each addition to the db
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  //one user to many recipes. The mapping technique to by using the siteUser common variable
   @OneToMany(mappedBy = "siteUser")
   List<Recipe> recipes;
 
@@ -21,6 +24,7 @@ public class SiteUser {
     this.password = password;
   }
 
+  //empty constructor for singleton initialization
   protected SiteUser(){
   }
 
