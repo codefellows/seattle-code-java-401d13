@@ -66,7 +66,7 @@ public class StatesAndCapitals
         // Use limit()
 
         List<StateInfo> firstFiveStates = null;
-
+        firstFiveStates = states.stream().limit(5).toList();
         testResults.put("B1", StatesAndCapitalsCheck.basic1(firstFiveStates));
 
         // B2. Submit the last five states
