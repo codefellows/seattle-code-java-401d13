@@ -73,7 +73,7 @@ public class StatesAndCapitals
         // Use skip()
 
         List<StateInfo> lastFiveStates = null;
-
+        lastFiveStates = states.stream().limit(5).toList();
         testResults.put("B2", StatesAndCapitalsCheck.basic2(lastFiveStates));
 
         // B3. From 1-20, submit the first 5 numbers
