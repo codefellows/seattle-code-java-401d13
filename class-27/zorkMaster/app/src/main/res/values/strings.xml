@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ZorkMaster</string>
+    <string name="greeting">Hello Zork</string>
+    <string name="save">Save</string>
+</resources>

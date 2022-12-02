@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".activities.UserProfileActivity">
+
+  <EditText
+    android:id="@+id/UserProfileETUsername"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="144dp"
+    android:ems="10"
+    android:hint="Username"
+    android:inputType="textPersonName"
+    android:minHeight="48dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+    android:id="@+id/UserProfileETPhoneNumber"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="29dp"
+    android:ems="10"
+    android:hint="@android:string/emptyPhoneNumber"
+    android:inputType="phone"
+    android:minHeight="48dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/UserProfileETUsername" />
+
+  <EditText
+    android:id="@+id/USerProfileEditTextAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="28dp"
+    android:ems="10"
+    android:hint="Address:"
+    android:inputType="textPostalAddress"
+    android:minHeight="48dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/UserProfileETPhoneNumber" />
+
+  <Button
+    android:id="@+id/UserProfileSaveBttn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="95dp"
+    android:text="@string/save"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/USerProfileEditTextAddress" />
+</androidx.constraintlayout.widget.ConstraintLayout>
