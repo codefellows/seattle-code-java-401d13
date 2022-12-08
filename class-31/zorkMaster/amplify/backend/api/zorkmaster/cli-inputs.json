@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "zorkmaster",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/InstructorWhtie/Documents/code-fellows/401_class/seattle-code-java-401d13/class-31/zorkMaster/amplify/backend/api/zorkmaster/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 30,
+      "apiKeyExpirationDate": "2023-01-06T19:39:15.521Z",
+      "keyDescription": ""
+    }
+  }
+}

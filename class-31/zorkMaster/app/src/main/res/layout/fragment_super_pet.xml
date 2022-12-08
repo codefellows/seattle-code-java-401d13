@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/frameLayout"
+  android:layout_width="match_parent"
+  android:layout_height="120dp"
+  android:background="#B0F4F2"
+  android:rotationX="1"
+  android:rotationY="-1"
+  tools:context=".fragments.SuperPetFragment">
+
+  <!-- TODO: Update blank fragment layout -->
+
+  <TextView
+    android:id="@+id/SuperPetFragment"
+    android:layout_width="320dp"
+    android:layout_height="64dp"
+    android:layout_marginStart="44dp"
+    android:layout_marginTop="28dp"
+    android:background="#F7C7C7"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/SuperPetFragTVName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="144dp"
+    android:text="TextView"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@+id/SuperPetFragment"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.504" />
+
+  <ImageView
+    android:id="@+id/SuperPetDeleteImage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:src="@android:drawable/btn_dialog"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.318" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
