@@ -1,36 +1,42 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation CreateSuperPet(
+  $input: CreateSuperPetInput!
+  $condition: ModelSuperPetConditionInput
 ) {
-  createTodo(input: $input, condition: $condition) {
+  createSuperPet(input: $input, condition: $condition) {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }
 }
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation UpdateSuperPet(
+  $input: UpdateSuperPetInput!
+  $condition: ModelSuperPetConditionInput
 ) {
-  updateTodo(input: $input, condition: $condition) {
+  updateSuperPet(input: $input, condition: $condition) {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }
 }
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
+mutation DeleteSuperPet(
+  $input: DeleteSuperPetInput!
+  $condition: ModelSuperPetConditionInput
 ) {
-  deleteTodo(input: $input, condition: $condition) {
+  deleteSuperPet(input: $input, condition: $condition) {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }

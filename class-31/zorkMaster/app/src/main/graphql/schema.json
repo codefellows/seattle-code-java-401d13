@@ -16,7 +16,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "getTodo",
+                        "name": "getSuperPet",
                         "description": null,
                         "args": [
                             {
@@ -36,14 +36,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "listTodos",
+                        "name": "listSuperPets",
                         "description": null,
                         "args": [
                             {
@@ -51,7 +51,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoFilterInput",
+                                    "name": "ModelSuperPetFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -79,7 +79,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelTodoConnection",
+                            "name": "ModelSuperPetConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -103,7 +103,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "Todo",
+                "name": "SuperPet",
                 "description": null,
                 "fields": [
                     {
@@ -139,12 +139,36 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "type",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "SuperPetTypeEnum",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "birthDate",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "AWSDateTime",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "height",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -199,6 +223,53 @@
                 "possibleTypes": null
             },
             {
+                "kind": "ENUM",
+                "name": "SuperPetTypeEnum",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "Water",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Electric",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Rock",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Fire",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Grass",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Sand_Glass",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
                 "kind": "SCALAR",
                 "name": "AWSDateTime",
                 "description": null,
@@ -209,8 +280,18 @@
                 "possibleTypes": null
             },
             {
+                "kind": "SCALAR",
+                "name": "Int",
+                "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoFilterInput",
+                "name": "ModelSuperPetFilterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -235,11 +316,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "type",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelSuperPetTypeEnumInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "birthDate",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "height",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -252,7 +353,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelSuperPetFilterInput",
                                 "ofType": null
                             }
                         },
@@ -266,7 +367,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelSuperPetFilterInput",
                                 "ofType": null
                             }
                         },
@@ -277,7 +378,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoFilterInput",
+                            "name": "ModelSuperPetFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -599,16 +700,6 @@
                 "possibleTypes": null
             },
             {
-                "kind": "SCALAR",
-                "name": "Int",
-                "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
                 "kind": "INPUT_OBJECT",
                 "name": "ModelStringInput",
                 "description": null,
@@ -754,8 +845,144 @@
                 "possibleTypes": null
             },
             {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelSuperPetTypeEnumInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "SuperPetTypeEnum",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "SuperPetTypeEnum",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelIntInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "ne",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "eq",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "le",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ge",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "attributeExists",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "attributeType",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "ModelAttributeTypes",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
                 "kind": "OBJECT",
-                "name": "ModelTodoConnection",
+                "name": "ModelSuperPetConnection",
                 "description": null,
                 "fields": [
                     {
@@ -770,7 +997,7 @@
                                 "name": null,
                                 "ofType": {
                                     "kind": "OBJECT",
-                                    "name": "Todo",
+                                    "name": "SuperPet",
                                     "ofType": null
                                 }
                             }
@@ -802,7 +1029,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "createTodo",
+                        "name": "createSuperPet",
                         "description": null,
                         "args": [
                             {
@@ -813,7 +1040,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "CreateTodoInput",
+                                        "name": "CreateSuperPetInput",
                                         "ofType": null
                                     }
                                 },
@@ -824,7 +1051,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelSuperPetConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -832,14 +1059,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateTodo",
+                        "name": "updateSuperPet",
                         "description": null,
                         "args": [
                             {
@@ -850,7 +1077,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "UpdateTodoInput",
+                                        "name": "UpdateSuperPetInput",
                                         "ofType": null
                                     }
                                 },
@@ -861,7 +1088,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelSuperPetConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -869,14 +1096,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteTodo",
+                        "name": "deleteSuperPet",
                         "description": null,
                         "args": [
                             {
@@ -887,7 +1114,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "DeleteTodoInput",
+                                        "name": "DeleteSuperPetInput",
                                         "ofType": null
                                     }
                                 },
@@ -898,7 +1125,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelSuperPetConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -906,7 +1133,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -920,7 +1147,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateTodoInput",
+                "name": "CreateSuperPetInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -949,11 +1176,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "type",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "SuperPetTypeEnum",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "birthDate",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "AWSDateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "height",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -965,7 +1212,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoConditionInput",
+                "name": "ModelSuperPetConditionInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -980,11 +1227,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "type",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelSuperPetTypeEnumInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "birthDate",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "height",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -997,7 +1264,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelSuperPetConditionInput",
                                 "ofType": null
                             }
                         },
@@ -1011,7 +1278,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelSuperPetConditionInput",
                                 "ofType": null
                             }
                         },
@@ -1022,7 +1289,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoConditionInput",
+                            "name": "ModelSuperPetConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1034,7 +1301,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateTodoInput",
+                "name": "UpdateSuperPetInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1063,11 +1330,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "type",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "SuperPetTypeEnum",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "birthDate",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "AWSDateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "height",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1079,7 +1366,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteTodoInput",
+                "name": "DeleteSuperPetInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1108,36 +1395,36 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "onCreateTodo",
+                        "name": "onCreateSuperPet",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onUpdateTodo",
+                        "name": "onUpdateSuperPet",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onDeleteTodo",
+                        "name": "onDeleteSuperPet",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "SuperPet",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2041,111 +2328,6 @@
                 "description": null,
                 "fields": null,
                 "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ModelIntInput",
-                "description": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "ne",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "eq",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "le",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lt",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "ge",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "gt",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "between",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "attributeExists",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Boolean",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "attributeType",
-                        "description": null,
-                        "type": {
-                            "kind": "ENUM",
-                            "name": "ModelAttributeTypes",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    }
-                ],
                 "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null

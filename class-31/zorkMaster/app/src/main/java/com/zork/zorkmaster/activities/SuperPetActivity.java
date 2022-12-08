@@ -4,57 +4,55 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.SuperPet;
 import com.zork.zorkmaster.R;
 import com.zork.zorkmaster.adapter.SuperPetRecyclerViewAdapter;
-import com.zork.zorkmaster.models.SuperPet;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class SuperPetActivity extends AppCompatActivity {
-  // TODO Step 7-5 Remove Database instances
-//  ZorkMasterDatabase zorkMasterDatabase;
+  public final static String TAG = "SuperPetActivity";
   public static final String SUPER_PET_NAME_TAG = "superPetName";
+  SuperPetRecyclerViewAdapter adapter;
+  private List<SuperPet> superPets;
 
-  // TODO: Step 1-1: Add a RecyclerView in the WSYIWYG editor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_super_pet);
-
-      // TODO Step 7-5 Remove Database instances
-//      zorkMasterDatabase = Room.databaseBuilder(
-//        getApplicationContext(),
-//        ZorkMasterDatabase.class,
-//        MainActivity.DATABASE_NAME)
-//        .fallbackToDestructiveMigration() // If Room gets confused, it tosses your database; don't use this in production!
-//        .allowMainThreadQueries()
-//        .build();
-
         setupRecyclerView();
-
     }
 
-    public void setupRecyclerView(){
-      // TODO Step 2-2:  Make some hardcoded data items
-      // TODO Step 6-1 find all SuperPets from database
-      // TODO Step 7-5 Remove Database instances
-//      List<SuperPet> superPets = zorkMasterDatabase.superPetDao().findAll();
-      List<SuperPet> superPets = new ArrayList<>();
-      superPets.add(new SuperPet("Zork", SuperPet.SuperPetTypeEnum.FIRE, 7, new Date()));
-      superPets.add(new SuperPet("Lemi", SuperPet.SuperPetTypeEnum.FIRE, 7, new Date()));
-        // TODO Step 1-2:  Grab the RecyclerView
+  @Override
+  protected void onResume() {
+    super.onResume();
+    Amplify.API.query(
+      ModelQuery.list(SuperPet.class),
+      success -> {
+        Log.i(TAG, "Read Super Pets successfully");
+        for (SuperPet databaseSuperPet : success.getData()) {
+          superPets.add(databaseSuperPet);
+        }
+        runOnUiThread(() -> adapter.notifyDataSetChanged()); // since this runs asynchronously, the adapter may already have rendered, so we have to tell it to update
+
+      },
+      failure -> Log.e(TAG, "Failed to read Super Pets from database")
+    );
+  }
+
+  public void setupRecyclerView(){
+      superPets = new ArrayList<>();
       RecyclerView superPetRV = findViewById(R.id.SuperPetRecyclerView);
-      // TODO Step 1-3: Set the layout manager of the RecyclerView to a LinearLayoutManager
       RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
       superPetRV.setLayoutManager(layoutManager);
-      // TODO Step 1-5: Create and attach the RecyclerView.Adapter
-      // TODO Step 2-3: (In this activity and RecyclerViewAdapter) Hand in some data items
-      // TODO Step 3-2: (In this activity and RecyclerViewAdapter) Hand in the Activity context
-      SuperPetRecyclerViewAdapter adapter = new SuperPetRecyclerViewAdapter(superPets, this);
+      adapter = new SuperPetRecyclerViewAdapter(superPets, this);
       superPetRV.setAdapter(adapter);
     }
 }

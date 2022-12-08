@@ -1,27 +1,33 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTodo {
-  onCreateTodo {
+subscription OnCreateSuperPet {
+  onCreateSuperPet {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateTodo {
-  onUpdateTodo {
+subscription OnUpdateSuperPet {
+  onUpdateSuperPet {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteTodo {
-  onDeleteTodo {
+subscription OnDeleteSuperPet {
+  onDeleteSuperPet {
     id
     name
-    description
+    type
+    birthDate
+    height
     createdAt
     updatedAt
   }
