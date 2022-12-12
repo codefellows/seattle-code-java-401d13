@@ -1,11 +1,88 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateSuperOwner {
+  onCreateSuperOwner {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSuperOwner {
+  onUpdateSuperOwner {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSuperOwner {
+  onDeleteSuperOwner {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateSuperPet {
   onCreateSuperPet {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -14,9 +91,20 @@ subscription OnUpdateSuperPet {
   onUpdateSuperPet {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -25,9 +113,20 @@ subscription OnDeleteSuperPet {
   onDeleteSuperPet {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }

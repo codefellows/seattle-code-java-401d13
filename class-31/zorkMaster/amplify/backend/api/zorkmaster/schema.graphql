@@ -1,11 +1,21 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 
+# TODO Step: 1-1 Create a new Model class -> SuperOwner with One-to-many to SuperPet
+type SuperOwner @model @auth(rules: [{allow: public}]){
+  id: ID!
+  name: String!
+  email: String
+  superPets: [SuperPet] @hasMany(indexName: "byOwners", fields: ["id"])
+}
+
 type SuperPet @model @auth(rules: [{allow: public}]){
   id: ID!
   name: String!
+  superOwnerId: ID! @index(name: "byOwners", sortKeyFields: ["name"])
   type: SuperPetTypeEnum
   birthDate: AWSDateTime
   height: Int
+  superOwner: SuperOwner @belongsTo(fields: ["superOwnerId"])
 }
 
 enum SuperPetTypeEnum{
@@ -16,3 +26,4 @@ enum SuperPetTypeEnum{
   Grass
   Sand_Glass
 }
+

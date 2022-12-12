@@ -1,4 +1,79 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateSuperOwner(
+  $input: CreateSuperOwnerInput!
+  $condition: ModelSuperOwnerConditionInput
+) {
+  createSuperOwner(input: $input, condition: $condition) {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSuperOwner(
+  $input: UpdateSuperOwnerInput!
+  $condition: ModelSuperOwnerConditionInput
+) {
+  updateSuperOwner(input: $input, condition: $condition) {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSuperOwner(
+  $input: DeleteSuperOwnerInput!
+  $condition: ModelSuperOwnerConditionInput
+) {
+  deleteSuperOwner(input: $input, condition: $condition) {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateSuperPet(
   $input: CreateSuperPetInput!
   $condition: ModelSuperPetConditionInput
@@ -6,9 +81,20 @@ mutation CreateSuperPet(
   createSuperPet(input: $input, condition: $condition) {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -20,9 +106,20 @@ mutation UpdateSuperPet(
   updateSuperPet(input: $input, condition: $condition) {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -34,9 +131,20 @@ mutation DeleteSuperPet(
   deleteSuperPet(input: $input, condition: $condition) {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
