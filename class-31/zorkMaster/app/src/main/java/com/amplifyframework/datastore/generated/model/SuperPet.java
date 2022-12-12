@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.generated.model;
 
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.core.model.annotations.BelongsTo;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,17 +25,20 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "SuperPets", authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
+@Index(name = "byOwners", fields = {"superOwnerId","name"})
 public final class SuperPet implements Model {
   public static final QueryField ID = field("SuperPet", "id");
   public static final QueryField NAME = field("SuperPet", "name");
   public static final QueryField TYPE = field("SuperPet", "type");
   public static final QueryField BIRTH_DATE = field("SuperPet", "birthDate");
   public static final QueryField HEIGHT = field("SuperPet", "height");
+  public static final QueryField SUPER_OWNER = field("SuperPet", "superOwnerId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="SuperPetTypeEnum") SuperPetTypeEnum type;
   private final @ModelField(targetType="AWSDateTime") Temporal.DateTime birthDate;
   private final @ModelField(targetType="Int") Integer height;
+  private final @ModelField(targetType="SuperOwner") @BelongsTo(targetName = "superOwnerId", type = SuperOwner.class) SuperOwner superOwner;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -57,6 +61,10 @@ public final class SuperPet implements Model {
       return height;
   }
   
+  public SuperOwner getSuperOwner() {
+      return superOwner;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -65,12 +73,13 @@ public final class SuperPet implements Model {
       return updatedAt;
   }
   
-  private SuperPet(String id, String name, SuperPetTypeEnum type, Temporal.DateTime birthDate, Integer height) {
+  private SuperPet(String id, String name, SuperPetTypeEnum type, Temporal.DateTime birthDate, Integer height, SuperOwner superOwner) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.birthDate = birthDate;
     this.height = height;
+    this.superOwner = superOwner;
   }
   
   @Override
@@ -86,6 +95,7 @@ public final class SuperPet implements Model {
               ObjectsCompat.equals(getType(), superPet.getType()) &&
               ObjectsCompat.equals(getBirthDate(), superPet.getBirthDate()) &&
               ObjectsCompat.equals(getHeight(), superPet.getHeight()) &&
+              ObjectsCompat.equals(getSuperOwner(), superPet.getSuperOwner()) &&
               ObjectsCompat.equals(getCreatedAt(), superPet.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), superPet.getUpdatedAt());
       }
@@ -99,6 +109,7 @@ public final class SuperPet implements Model {
       .append(getType())
       .append(getBirthDate())
       .append(getHeight())
+      .append(getSuperOwner())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -114,6 +125,7 @@ public final class SuperPet implements Model {
       .append("type=" + String.valueOf(getType()) + ", ")
       .append("birthDate=" + String.valueOf(getBirthDate()) + ", ")
       .append("height=" + String.valueOf(getHeight()) + ", ")
+      .append("superOwner=" + String.valueOf(getSuperOwner()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -138,6 +150,7 @@ public final class SuperPet implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -147,7 +160,8 @@ public final class SuperPet implements Model {
       name,
       type,
       birthDate,
-      height);
+      height,
+      superOwner);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -160,6 +174,7 @@ public final class SuperPet implements Model {
     BuildStep type(SuperPetTypeEnum type);
     BuildStep birthDate(Temporal.DateTime birthDate);
     BuildStep height(Integer height);
+    BuildStep superOwner(SuperOwner superOwner);
   }
   
 
@@ -169,6 +184,7 @@ public final class SuperPet implements Model {
     private SuperPetTypeEnum type;
     private Temporal.DateTime birthDate;
     private Integer height;
+    private SuperOwner superOwner;
     @Override
      public SuperPet build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -178,7 +194,8 @@ public final class SuperPet implements Model {
           name,
           type,
           birthDate,
-          height);
+          height,
+          superOwner);
     }
     
     @Override
@@ -206,6 +223,12 @@ public final class SuperPet implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep superOwner(SuperOwner superOwner) {
+        this.superOwner = superOwner;
+        return this;
+    }
+    
     /** 
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -218,12 +241,13 @@ public final class SuperPet implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, SuperPetTypeEnum type, Temporal.DateTime birthDate, Integer height) {
+    private CopyOfBuilder(String id, String name, SuperPetTypeEnum type, Temporal.DateTime birthDate, Integer height, SuperOwner superOwner) {
       super.id(id);
       super.name(name)
         .type(type)
         .birthDate(birthDate)
-        .height(height);
+        .height(height)
+        .superOwner(superOwner);
     }
     
     @Override
@@ -244,6 +268,11 @@ public final class SuperPet implements Model {
     @Override
      public CopyOfBuilder height(Integer height) {
       return (CopyOfBuilder) super.height(height);
+    }
+    
+    @Override
+     public CopyOfBuilder superOwner(SuperOwner superOwner) {
+      return (CopyOfBuilder) super.superOwner(superOwner);
     }
   }
   

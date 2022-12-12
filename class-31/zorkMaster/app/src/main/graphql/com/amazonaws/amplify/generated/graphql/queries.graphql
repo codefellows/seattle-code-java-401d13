@@ -1,11 +1,63 @@
 # this is an auto generated file. This will be overwritten
+query GetSuperOwner($id: ID!) {
+  getSuperOwner(id: $id) {
+    id
+    name
+    email
+    superPets {
+      items {
+        id
+        name
+        superOwnerId
+        type
+        birthDate
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListSuperOwners(
+  $filter: ModelSuperOwnerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSuperOwners(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query GetSuperPet($id: ID!) {
   getSuperPet(id: $id) {
     id
     name
+    superOwnerId
     type
     birthDate
     height
+    superOwner {
+      id
+      name
+      email
+      superPets {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -19,9 +71,17 @@ query ListSuperPets(
     items {
       id
       name
+      superOwnerId
       type
       birthDate
       height
+      superOwner {
+        id
+        name
+        email
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
