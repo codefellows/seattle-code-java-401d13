@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">ZorkMaster</string>
-    <string name="greeting">Hello Zork</string>
-    <string name="save">Save</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="app_name">ZorkMaster</string>
+  <string name="greeting">Hello Zork</string>
+  <string name="save">Save</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
