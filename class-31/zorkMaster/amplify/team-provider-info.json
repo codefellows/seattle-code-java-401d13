@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "zorkmasterfc787c55": {}
+        "zorkmasterfc787c55": {},
+        "true": {}
       }
     }
   }

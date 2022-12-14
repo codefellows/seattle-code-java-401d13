@@ -2,5 +2,5 @@
   "AppSyncApiName": "zorkmaster",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-12-13T18:53:01.607Z"
+  "AuthModeLastUpdated": "2022-12-14T18:28:45.585Z"
 }

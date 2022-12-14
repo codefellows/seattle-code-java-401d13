@@ -12,6 +12,7 @@ query GetSuperOwner($id: ID!) {
         type
         birthDate
         height
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -58,6 +59,7 @@ query GetSuperPet($id: ID!) {
       createdAt
       updatedAt
     }
+    s3ImageKey
     createdAt
     updatedAt
   }
@@ -82,6 +84,7 @@ query ListSuperPets(
         createdAt
         updatedAt
       }
+      s3ImageKey
       createdAt
       updatedAt
     }
