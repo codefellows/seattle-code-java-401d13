@@ -10,6 +10,11 @@
       "StackName": "amplify-zorkmaster-dev-112340",
       "StackId": "arn:aws:cloudformation:us-west-2:582540622287:stack/amplify-zorkmaster-dev-112340/a8c5dce0-7664-11ed-ba3a-02aaef93c5ed",
       "AmplifyAppId": "d29vp7cuvlw3zu"
+    },
+    "categories": {
+      "auth": {
+        "zorkmasterfc787c55": {}
+      }
     }
   }
 }

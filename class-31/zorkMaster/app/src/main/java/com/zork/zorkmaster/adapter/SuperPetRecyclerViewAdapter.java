@@ -46,8 +46,7 @@ public class SuperPetRecyclerViewAdapter extends RecyclerView.Adapter<SuperPetRe
 
     superPetFragmentTextViewName.setText((position+1) + ". " + superPet.getName()
       + "\n" + superPet.getHeight()
-      + "\n" + superPet.getType()
-      + "\n" + superPet.getBirthDate());
+      + "\n" + superPet.getType());
     View superPetItemView = holder.itemView;
     superPetItemView.setOnClickListener(v -> {
       Intent goToOrderFormIntent = new Intent(callingActivity, OrderForm.class);
