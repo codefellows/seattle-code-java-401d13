@@ -21,6 +21,11 @@ import com.zork.zorkmaster.activities.auth.SignUpActivity;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
   public static final String TAG = "mainActivity";
   public static final String DATABASE_NAME = "zork_master_db";
@@ -31,47 +36,47 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-//    authUser = Amplify.Auth.getCurrentUser();
-    //TODO 2-1 Hardcode signup, verify and login
-//    Amplify.Auth.signUp("alex.white@codefellows.com",
-//      "p@ssw0rd",  // Cognito's default password policy is 8 characters, no other requirements
-//      AuthSignUpOptions.builder()
-//        .userAttribute(AuthUserAttributeKey.email(), "alex.white@codefellows")
-//        .userAttribute(AuthUserAttributeKey.nickname(), "Firefly")
-//        .build(),
-//      success -> Log.i(TAG, "Signup suceeded" + success.toString()),
-//      failure -> Log.w(TAG, "Signup dailed with email: " + "alex.white@codefellows" + "with the message: " + failure)
-//    );
 
-    // Verfication
-//      Amplify.Auth.confirmSignUp(
-//        "alex.white@codefellows.com",
-//        "578232",
-//        success -> Log.i(TAG, "verify suceeded"),
-//        failure -> Log.i(TAG, "verification failed: " + failure)
-//      );
+    // TODO This is how you get the currentAuthUser
+    Amplify.Auth.getCurrentUser(
+      success -> {
+        Log.i(TAG, "There is a user");
+        authUser = success;
+        },
+      failure -> {
+        Log.w(TAG, "There is no current authenticated User");
+        authUser = null;
+      }
+    );
+
+    // TODO Step 3-1 Manual upload of a file to S3
+//    String testFilename = "testFileName";
+//    File testFile = new File(getApplicationContext().getFilesDir(), testFilename);
 //
-//    //Login
+//    try
+//    {
+//      BufferedWriter testFileBufferedWriter = new BufferedWriter(new FileWriter(testFile));
+//      testFileBufferedWriter.append("Some test text here\nAnother line of test text");
+//      testFileBufferedWriter.close();  // Make sure to do this or the text may not be saved!
+//    } catch (IOException ioe)
+//    {
+//      Log.e(TAG, "Could not write file locally with filename: " + testFilename);
+//    }
 //
-//    Amplify.Auth.signIn(
-//      "alex.white@codefellows.com",
-//      "p@ssw0rd",
-//      success -> Log.i(TAG, "SignIn success!"),
-//      failure -> Log.e(TAG, "SignIn failed")
+//    String testFileS3Key = "someFileOnS3.txt";
+//
+//    Amplify.Storage.uploadFile(
+//      testFileS3Key,
+//      testFile,
+//      success ->
+//      {
+//        Log.i(TAG, "S3 upload succeeded! Key is: " + success.getKey());
+//      },
+//      failure ->
+//      {
+//        Log.i(TAG, "S3 upload failed! " + failure.getMessage());
+//      }
 //    );
-
-    // Signout -> logout
-//      Amplify.Auth.signOut(
-//        () ->
-//        {
-//          Log.i(TAG, "Logout succeeded!");
-//        },
-//        failure ->
-//        {
-//          Log.i(TAG, "Logout failed: " + failure);
-//        }
-//      );
-
 
 
     setupBttns();

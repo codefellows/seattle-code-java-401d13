@@ -16,6 +16,7 @@ type SuperPet @model @auth(rules: [{allow: public}]){
   birthDate: AWSDateTime
   height: Int
   superOwner: SuperOwner @belongsTo(fields: ["superOwnerId"])
+  s3ImageKey: String
 }
 
 enum SuperPetTypeEnum{

@@ -11,12 +11,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="101dp"
-    android:layout_marginTop="74dp"
+    android:layout_marginTop="72dp"
     android:layout_marginEnd="100dp"
     android:ems="10"
     android:hint="Name"
     android:inputType="textPersonName"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,4 +60,41 @@
     app:layout_constraintBottom_toTopOf="@+id/AddASuperPetSaveBttn"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+    android:id="@+id/textView5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="242dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="7dp"
+    android:text="Add an Image!"
+    app:layout_constraintEnd_toStartOf="@+id/AddASuperPetBttnAddImage"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/AddASuperPetBttnAddImage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="7dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:clickable="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/textView5"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@android:drawable/ic_input_add" />
+
+  <ImageView
+    android:id="@+id/ADdAASuperPetImageViewImage"
+    android:layout_width="69dp"
+    android:layout_height="66dp"
+    android:layout_marginStart="7dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="163dp"
+    app:layout_constraintEnd_toStartOf="@+id/textView5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/ic_launcher_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

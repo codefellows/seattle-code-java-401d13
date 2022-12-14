@@ -15,6 +15,7 @@ mutation CreateSuperOwner(
         type
         birthDate
         height
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -40,6 +41,7 @@ mutation UpdateSuperOwner(
         type
         birthDate
         height
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -65,6 +67,7 @@ mutation DeleteSuperOwner(
         type
         birthDate
         height
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -95,6 +98,7 @@ mutation CreateSuperPet(
       createdAt
       updatedAt
     }
+    s3ImageKey
     createdAt
     updatedAt
   }
@@ -120,6 +124,7 @@ mutation UpdateSuperPet(
       createdAt
       updatedAt
     }
+    s3ImageKey
     createdAt
     updatedAt
   }
@@ -145,6 +150,7 @@ mutation DeleteSuperPet(
       createdAt
       updatedAt
     }
+    s3ImageKey
     createdAt
     updatedAt
   }

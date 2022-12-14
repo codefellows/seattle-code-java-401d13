@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import com.amplifyframework.datastore.generated.model.SuperPet;
 import com.zork.zorkmaster.R;
 import com.zork.zorkmaster.activities.OrderForm;
 import com.zork.zorkmaster.activities.SuperPetActivity;
+import com.zork.zorkmaster.activities.SuperPetDetailActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,6 +44,7 @@ public class SuperPetRecyclerViewAdapter extends RecyclerView.Adapter<SuperPetRe
   @Override
   public void onBindViewHolder(@NonNull SuperPetViewHolder holder, int position) {
     TextView superPetFragmentTextViewName = holder.itemView.findViewById(R.id.SuperPetFragTVName);
+    ImageView superPetFragImageView;
     SuperPet superPet = superPets.get(position);
 
     superPetFragmentTextViewName.setText((position+1) + ". " + superPet.getName()
@@ -49,8 +52,8 @@ public class SuperPetRecyclerViewAdapter extends RecyclerView.Adapter<SuperPetRe
       + "\n" + superPet.getType());
     View superPetItemView = holder.itemView;
     superPetItemView.setOnClickListener(v -> {
-      Intent goToOrderFormIntent = new Intent(callingActivity, OrderForm.class);
-      goToOrderFormIntent.putExtra(SuperPetActivity.SUPER_PET_NAME_TAG, superPet.getName());
+      Intent goToOrderFormIntent = new Intent(callingActivity, SuperPetDetailActivity.class);
+      goToOrderFormIntent.putExtra(SuperPetActivity.SUPER_PET_ID_TAG, superPet.getId());
       callingActivity.startActivity(goToOrderFormIntent);
     });
   }

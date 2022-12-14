@@ -20,6 +20,7 @@ import java.util.List;
 public class SuperPetActivity extends AppCompatActivity {
   public final static String TAG = "SuperPetActivity";
   public static final String SUPER_PET_NAME_TAG = "superPetName";
+  public static final String SUPER_PET_ID_TAG = "superPetId";
   SuperPetRecyclerViewAdapter adapter;
   private List<SuperPet> superPets;
 

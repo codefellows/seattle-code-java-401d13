@@ -1,0 +1,18 @@
+{
+  "resourceName": "s3f7af2b87",
+  "policyUUID": "f7af2b87",
+  "bucketName": "zorkmaster6383ff5c952f4cd29965a87547921d24",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
