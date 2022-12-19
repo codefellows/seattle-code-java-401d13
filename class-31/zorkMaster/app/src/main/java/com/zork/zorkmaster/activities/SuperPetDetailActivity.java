@@ -43,13 +43,14 @@ public class SuperPetDetailActivity extends AppCompatActivity {
     }
   }
 
-  private SuperPet getSuperPetById(String superPetId){
+  private void getSuperPetById(String superPetId){
     SuperPet databaseSuperPet;
     Amplify.API.query(
       ModelQuery.get(SuperPet.class, superPetId),
       success -> {
-        Log.i(TAG, "Query Super Pet correctly", )
+        Log.i(TAG, "Query Super Pet correctly");
       },
+      // TODO: finish implementing the details call
       failure -> {}
     );
   }

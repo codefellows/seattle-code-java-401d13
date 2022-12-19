@@ -13,18 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amplifyframework.auth.AuthUser;
-import com.amplifyframework.auth.AuthUserAttributeKey;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.zork.zorkmaster.R;
-import com.zork.zorkmaster.activities.auth.SignUpActivity;
-
-import org.w3c.dom.Text;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
   public static final String TAG = "mainActivity";
@@ -49,36 +39,6 @@ public class MainActivity extends AppCompatActivity {
       }
     );
 
-    // TODO Step 3-1 Manual upload of a file to S3
-//    String testFilename = "testFileName";
-//    File testFile = new File(getApplicationContext().getFilesDir(), testFilename);
-//
-//    try
-//    {
-//      BufferedWriter testFileBufferedWriter = new BufferedWriter(new FileWriter(testFile));
-//      testFileBufferedWriter.append("Some test text here\nAnother line of test text");
-//      testFileBufferedWriter.close();  // Make sure to do this or the text may not be saved!
-//    } catch (IOException ioe)
-//    {
-//      Log.e(TAG, "Could not write file locally with filename: " + testFilename);
-//    }
-//
-//    String testFileS3Key = "someFileOnS3.txt";
-//
-//    Amplify.Storage.uploadFile(
-//      testFileS3Key,
-//      testFile,
-//      success ->
-//      {
-//        Log.i(TAG, "S3 upload succeeded! Key is: " + success.getKey());
-//      },
-//      failure ->
-//      {
-//        Log.i(TAG, "S3 upload failed! " + failure.getMessage());
-//      }
-//    );
-
-
     setupBttns();
     setupUserProfileImageButton();
   }
@@ -94,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
 
   public void setupBttns() {
-    Button goToOrderFormBttn = MainActivity.this.findViewById(R.id.MainActivityOrderFormBttn);
-    goToOrderFormBttn.setOnClickListener(view -> {
-      Intent goToOrderFormActivity = new Intent(this, OrderForm.class);
-      startActivity(goToOrderFormActivity);
+    Button goToLocationActivityBttn = MainActivity.this.findViewById(R.id.MainActivityLocationBttn);
+    goToLocationActivityBttn.setOnClickListener(view -> {
+      Intent goToLocationActivity = new Intent(this, LocationActivity.class);
+      startActivity(goToLocationActivity);
     });
     // Sign in button
     Button signIn = findViewById(R.id.MainActivitySignInBttn);
