@@ -42,11 +42,11 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <Button
-    android:id="@+id/MainActivityOrderFormBttn"
+    android:id="@+id/MainActivityLocationBttn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="70dp"
-    android:text="Go to Order Form"
+    android:text="Locations!"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +78,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="44dp"
     android:text="See Super Pets"
-    app:layout_constraintBottom_toTopOf="@+id/MainActivityOrderFormBttn"
+    app:layout_constraintBottom_toTopOf="@+id/MainActivityLocationBttn"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
 

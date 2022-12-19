@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.zork.zorkmaster">
 
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <application
     android:name=".ZorkMasterAmplifyApplication"
     android:allowBackup="true"
@@ -10,6 +12,9 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.ZorkMaster">
+    <activity
+      android:name=".activities.LocationActivity"
+      android:exported="false" />
     <activity
       android:name=".activities.auth.SignInActivity"
       android:exported="false" />
