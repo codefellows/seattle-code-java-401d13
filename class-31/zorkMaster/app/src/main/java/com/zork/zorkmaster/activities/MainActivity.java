@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -12,36 +13,50 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.core.Amplify;
 import com.zork.zorkmaster.R;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
   public static final String TAG = "mainActivity";
   public static final String DATABASE_NAME = "zork_master_db";
   public static final String ZORK_PRODUCT_EXTRA_TAG = "zorkProduct";
   public AuthUser authUser = null;
+  private final MediaPlayer mp = new MediaPlayer();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // TODO This is how you get the currentAuthUser
-    Amplify.Auth.getCurrentUser(
-      success -> {
-        Log.i(TAG, "There is a user");
-        authUser = success;
-        },
-      failure -> {
-        Log.w(TAG, "There is no current authenticated User");
-        authUser = null;
-      }
-    );
+      Amplify.Predictions.convertTextToSpeech(
+        "I like to eat spaghetti",
+        result -> playAudio(result.getAudioData()),
+        error -> Log.e("MyAmplifyApp", "Conversion failed", error)
+      );
+
+    AnalyticsEvent event = AnalyticsEvent.builder()
+      .name("Opened App")
+      .addProperty("Time", Long.toString(new Date().getTime()))
+      .addProperty("trackingEvent", "Main activity was opened")
+      .build();
+
+    Amplify.Analytics.recordEvent(event);
 
     setupBttns();
     setupUserProfileImageButton();
-  }
+    }
+
 
   @Override
   protected void onResume() {
@@ -49,9 +64,40 @@ public class MainActivity extends AppCompatActivity {
     setupGreeting();
     setupProductButtons();
     setupSuperPetBttn();
+
   }
 
+  private void playAudio(InputStream data) {
+    File mp3File = new File(getCacheDir(), "audio.mp3");
 
+    try (OutputStream out = new FileOutputStream(mp3File)) {
+      Log.i(TAG, "Reading input stream");
+      byte[] buffer = new byte[8 * 1_024];
+      int bytesRead;
+      while ((bytesRead = data.read(buffer)) != -1) {
+        out.write(buffer, 0, bytesRead);
+      }
+      mp.reset();
+      mp.setOnPreparedListener(MediaPlayer::start);
+      mp.setDataSource(new FileInputStream(mp3File).getFD());
+      mp.prepareAsync();
+    } catch (IOException error) {
+      Log.e("MyAmplifyApp", "Error writing audio file", error);
+    }
+
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    AnalyticsEvent event = AnalyticsEvent.builder()
+      .name("Paused main activity")
+      .addProperty("Time", Long.toString(new Date().getTime()))
+      .addProperty("trackingEvent", "Main activity was paused")
+      .build();
+
+    Amplify.Analytics.recordEvent(event);
+  }
 
   public void setupBttns() {
     Button goToLocationActivityBttn = MainActivity.this.findViewById(R.id.MainActivityLocationBttn);
