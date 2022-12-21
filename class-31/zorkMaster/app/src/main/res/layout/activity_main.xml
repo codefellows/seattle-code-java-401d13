@@ -82,4 +82,16 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
 
+  <Button
+    android:id="@+id/MainActivityAdsBttn"
+    android:layout_width="74dp"
+    android:layout_height="41dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginEnd="331dp"
+    android:layout_marginBottom="16dp"
+    android:text="Ads"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

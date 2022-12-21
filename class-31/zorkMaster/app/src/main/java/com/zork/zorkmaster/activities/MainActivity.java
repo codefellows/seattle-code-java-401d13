@@ -100,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void setupBttns() {
+    Button goToAdsActivity = findViewById(R.id.MainActivityAdsBttn);
+    goToAdsActivity.setOnClickListener(v -> {
+      Intent goToAdsActivityIntent = new Intent(this, OrderForm.class);
+      startActivity(goToAdsActivityIntent);
+    });
     Button goToLocationActivityBttn = MainActivity.this.findViewById(R.id.MainActivityLocationBttn);
     goToLocationActivityBttn.setOnClickListener(view -> {
       Intent goToLocationActivity = new Intent(this, LocationActivity.class);
